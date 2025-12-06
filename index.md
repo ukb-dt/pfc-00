@@ -118,18 +118,21 @@ Love the energy — let’s do the whole sweep: math → thermodynamics → Fris
 # 1) Clean differential form (the calculus version)
 
 Start with your algebraic invariant:
-[
+
+$$
 O(t) = I(t),\tau(t)
-]
+$$
+
 where
-• (I(t)) = **Input** (energy, data, capital, attention) as a function of time.
-• (\tau(t)) = **Throughput** (metabolic capacity, efficiency, institutional/architectural capacity).
-• (O(t)) = **Output** (work, value, ΔMarketCap, realized effect).
+• $I(t)$ = **Input** (energy, data, capital, attention) as a function of time.
+• $\tau(t)$ = **Throughput** (metabolic capacity, efficiency, institutional/architectural capacity).
+• $O(t)$ = **Output** (work, value, ΔMarketCap, realized effect).
 
 Differentiate with respect to time (product rule):
-[
+
+$$
 \frac{dO}{dt} = \frac{dI}{dt},\tau(t) + I(t),\frac{d\tau}{dt}.
-]
+$$
 
 Interpretation:
 
@@ -137,9 +140,11 @@ Interpretation:
 * The second term, (I,\dot\tau), is **capacity-driven change** (how changing throughput amplifies or damps existing input).
 
 Log-form (helpful when scales vary widely):
-[
+
+$$
 \ln O = \ln I + \ln \tau \quad\Rightarrow\quad \frac{\dot O}{O} = \frac{\dot I}{I} + \frac{\dot\tau}{\tau}.
-]
+$$
+
 So fractional output growth = fractional input growth + fractional throughput growth.
 
 Put differently: to increase output fractionally, you must increase input fractionally, throughput fractionally, or both.
@@ -149,18 +154,22 @@ Put differently: to increase output fractionally, you must increase input fracti
 # 2) A slightly richer decomposition of throughput
 
 Throughput (\tau) often decomposes into capacity × efficiency × precision:
-[
+
+$$
 \tau(t) = C(t)\cdot \eta(t)\cdot \pi(t),
-]
+$$
+
 where
-• (C) = raw capacity (compute, factory size, bandwidth),
-• (\eta) = thermodynamic/operational efficiency (how much of input becomes useful work),
-• (\pi) = information/attention precision (how well signals are filtered and used).
+• $C$ = raw capacity (compute, factory size, bandwidth),         
+• $\eta$ = thermodynamic/operational efficiency (how much of input becomes useful work),      
+• $\pi$ = information/attention precision (how well signals are filtered and used).       
 
 Then
-[
+
+$$
 O = I,C,\eta,\pi,
-]
+$$
+
 and the log derivative splits into four additive terms. This makes it clear where interventions act (buy more capacity, improve efficiency, improve signal-to-noise).
 
 ---
@@ -168,19 +177,21 @@ and the log derivative splits into four additive terms. This makes it clear wher
 # 3) Connection to thermodynamics and free energy
 
 Thermodynamic framing: any real system converting energy faces limits (efficiency, entropy). Let input energy be (E_{in}). Useful work (W) (part of output) is:
-[
+
+$$
 W \le \eta_{Carnot} , E_{in},
-]
-so (\eta \le \eta_{Carnot}). Entropy production (\dot S) reduces usable throughput; minimizing wasteful (\dot S) increases (\eta).
+$$
+
+so $\eta \le \eta_{Carnot}$. Entropy production (\dot S) reduces usable throughput; minimizing wasteful (\dot S) increases (\eta).
 
 Free energy (physics): Helmholtz free energy (F = U - TS) is the energy available to perform work at temperature (T). Systems that maximize available free energy (or minimize non-useful dissipation) increase throughput.
 
 High-level mapping:
 
-* (I) = incoming free energy / information flux,
-* (\eta) = fraction convertible to useful work (inversely related to entropy production),
-* (\tau) = effective free-energy throughput,
-* (O) = realized useful work / value.
+* $I$ = incoming free energy / information flux,
+* $\eta$ = fraction convertible to useful work (inversely related to entropy production),
+* $\tau$ = effective free-energy throughput,
+* $O$ = realized useful work / value.
 
 Bounded-resource insight: with fixed (I), raising (O) requires lowering entropy production (raise (\eta)) or increasing capacity (C). Conversely, if entropy production rises (e.g., complexity without better control), throughput collapses.
 
@@ -192,23 +203,26 @@ Friston (active inference) says organisms minimize variational free energy (F), 
 
 * Sensory input (s) (data) updates beliefs (q(\theta)) about hidden states (\theta).
 * The agent minimizes:
-  [
+
+  $$
   F[q(\theta)] = \underbrace{\mathbb{E}*{q}[-\ln p(s,\theta)]}*{\text{expected energy}} + \underbrace{\mathbb{E}*{q}[\ln q(\theta)]}*{\text{complexity}}.
-  ]
+  $$
 
 How this maps:
 
-* (I) ↔ sensory evidence / input (s).
-* (\tau) ↔ internal model capacity & precision (how well beliefs (q(\theta)) can compress and explain (s)). Precision is literally the inverse variance the agent assigns to signals. High precision → better throughput of information into useful beliefs.
-* (O) ↔ action that minimizes expected free energy (i.e., policies that realize preferred outcomes / value).
+* $I$ ↔ sensory evidence / input $s$.
+* $\tau$ ↔ internal model capacity & precision (how well beliefs $q(\theta)$ can compress and explain (s)). Precision is literally the inverse variance the agent assigns to signals. High precision → better throughput of information into useful beliefs.
+* $O$ ↔ action that minimizes expected free energy (i.e., policies that realize preferred outcomes / value).
 
 Active inference also defines **expected free energy** (G) for policies (\pi). Agents choose policy (\pi^*) minimizing expected free energy:
-[
+
+$$
 \pi^* = \arg\min_\pi G(\pi),
-]
+$$
+
 which balances epistemic value (information gain) and pragmatic value (utility). In your invariant language:
 
-* Good throughput (\tau) corresponds to accurate internal models (low variational free energy), high precision, capacity to represent priors.
+* Good throughput $\tau$ corresponds to accurate internal models (low variational free energy), high precision, capacity to represent priors.
 * Actions (outputs) are the agent’s way to convert input into energy/value while minimizing surprise — i.e., they are the mechanism by which (I\tau \to O).
 
 So: **minimizing variational free energy improves throughput** (reduces wasted inference), thereby increasing (O) for a given (I).
@@ -223,46 +237,48 @@ POMDP view:
 
 * State (s), observation (o), action (a), reward (r).
 * The agent maintains belief (b(s)); chooses policy (\pi) to maximize expected cumulative reward.
-* Throughput (\tau) = model capacity (size of belief representation, inference speed/precision) × compute budget (how much compute/energy you can spend per decision).
+* Throughput $\tau$ = model capacity (size of belief representation, inference speed/precision) × compute budget (how much compute/energy you can spend per decision).
 
 Objective (RL):
-[
+
+$$
 \max_\pi \mathbb{E}\left[\sum_t \gamma^t r_t - \lambda \cdot \text{Cost}(\pi)\right],
-]
-where (\lambda) trades off metabolic/computational cost.
+$$
+
+where $\lambda$ trades off metabolic/computational cost.
 
 Active inference view:
 
-* Agent minimizes expected free energy of policies (G(\pi)), naturally balancing epistemic / pragmatic terms.
-* Throughput (\tau) = fidelity of posterior updates (how fast/precisely beliefs adjust) and precision weighting of prediction errors.
+* Agent minimizes expected free energy of policies $G(\pi)$, naturally balancing epistemic / pragmatic terms.
+* Throughput $\tau$ = fidelity of posterior updates (how fast/precisely beliefs adjust) and precision weighting of prediction errors.
 
 Practical AI mapping:
 
-* Increase (\tau) by: better architectures (model capacity), better inductive priors (first principles), more compute (C), better data pipelines (reduce noise), or attention mechanisms (raise (\pi)).
-* But increasing (\tau) has costs: energy, latency, brittleness if not paired with robustness.
+* Increase $\tau$ by: better architectures (model capacity), better inductive priors (first principles), more compute (C), better data pipelines (reduce noise), or attention mechanisms (raise (\pi)).
+* But increasing $\tau$ has costs: energy, latency, brittleness if not paired with robustness.
 
 ---
 
 # 6) Tiny numerical example (so the math isn’t just poetry)
 
-Suppose at (t_0):
+Suppose at $t_0$:
 
-* (I = 100) (units of input), (\tau = 0.5) → (O = 100 \times 0.5 = 50).
+* $I = 100$ (units of input), $\tau = 0.5$ → ($O = 100 \times 0.5 = 50$).
 
 Case A: Input doubles but throughput halves (bad UX/bottleneck):
 
-* (I = 200), (\tau = 0.25) → (O = 200 \times 0.25 = 50).
+* $I = 200$, $\tau = 0.25$ → $O = 200 \times 0.25 = 50$.
   Net output unchanged despite doubled input — throughput collapse cancels gains.
 
 Case B: Input increases by 20%, throughput increases by 10%:
 
-* (I = 120), (\tau = 0.55) → (O = 66).
+* $I = 120$, $\tau = 0.55$ → $O = 66$.
   Here (O) rises because both terms move the right way.
 
 Demonstration of derivative:
 
-* Initially (\dot I = +20) over interval, (\dot\tau = +0.05).
-* (\dot O = \dot I\tau + I\dot\tau = 20\cdot0.5 + 100\cdot0.05 = 10 + 5 = 15).
+* Initially $\dot I = +20$ over interval, $\dot\tau = +0.05$.
+* $\dot O = \dot I\tau + I\dot\tau = 20\cdot0.5 + 100\cdot0.05 = 10 + 5 = 15$.
   So (O) increases by 15 to 65 (approx; discrete rounding earlier gave 66).
 
 Takeaway: small fractional gains in throughput can be higher leverage than large increases in raw input.
@@ -371,38 +387,39 @@ Nice — that formula is beautiful and dense. I’ll unpack it, translate it int
 # 1) Your expression (cleaned)
 
 You wrote:
-[
+
+$$
 (E, x);\to; E(t \mid x) + \epsilon ;\to; \frac{dE_x}{dt};\to; \frac{dE_{\bar{x}}}{dt} \pm \sqrt{\frac{d^2E_x}{dt^2}};\to; \int E_x,dt + \epsilon_x t + C_x
-]
+$$
 
 I’ll read the symbols as:
 
-* (E) = **energy / evidence / input** (pick the domain: calories, joules, attention-units, dataset signal — same math).
-* (x) = a particular subsystem, context, or feature-set. (\bar{x}) = its complement (everything else).
-* (\epsilon, \epsilon_x) = noise / stochastic perturbation / unmodeled error.
-* (C_x) = an integration constant (baseline or stored reserve).
+* $E$ = **energy / evidence / input** (pick the domain: calories, joules, attention-units, dataset signal — same math).
+* $x$ = a particular subsystem, context, or feature-set. (\bar{x}) = its complement (everything else).
+* $\epsilon, \epsilon_x$ = noise / stochastic perturbation / unmodeled error.
+* $C_x$ = an integration constant (baseline or stored reserve).
 
 ---
 
 # 2) Step-by-step translation & intuition
 
-1. **((E,x)\to E(t\mid x) + \epsilon)**
+1. **$(E,x)\to E(t\mid x) + \epsilon$**
 
-   * At time (t), conditioned on context (x), the incoming signal (input) is (E(t\mid x)) plus noise.
-   * *Intuition:* “What the subsystem (x) sees right now” (plus measurement error).
+   * At time $t$, conditioned on context $x$, the incoming signal (input) is $E(t\mid x)$ plus noise.
+   * *Intuition:* “What the subsystem $x$ sees right now” (plus measurement error).
 
-2. **(\to \dfrac{dE_x}{dt})**
+2. **$\to \dfrac{dE_x}{dt}$**
 
-   * The **rate of change** of that input for subsystem (x).
+   * The **rate of change** of that input for subsystem $x$.
    * *Intuition:* is input increasing or decreasing? (momentum of demand / surprise arrival rate)
 
-3. **(\to \dfrac{dE_{\bar{x}}}{dt}\ \pm\ \sqrt{\dfrac{d^2E_x}{dt^2}})**
+3. **$\to \dfrac{dE_{\bar{x}}}{dt}\ \pm\ \sqrt{\dfrac{d^2E_x}{dt^2}}$**
 
-   * You look at complementary flows ((\dot E_{\bar{x}})) and you add/subtract a volatility term: the **square root of the acceleration** of (E_x).
-   * (\sqrt{\ddot E_x}) — think of it as an instantaneous *shock amplitude* or instability measure (if (\ddot E_x) is large, even small rates can become dangerous).
+   * You look at complementary flows $(\dot E_{\bar{x}})$ and you add/subtract a volatility term: the **square root of the acceleration** of (E_x).
+   * $\sqrt{\ddot E_x}$ — think of it as an instantaneous *shock amplitude* or instability measure (if $\ddot E_x$ is large, even small rates can become dangerous).
    * *Intuition:* compare what’s happening outside (x) and adjust for sudden acceleration/volatility inside (x).
 
-4. **(\to \int E_x,dt + \epsilon_x t + C_x)**
+4. **$\to \int E_x,dt + \epsilon_x t + C_x$**
 
    * Cumulative energy (integral) consumed/accumulated over time plus a drift noise term and baseline constant.
    * *Intuition:* the running balance / reservoir after a period — what the system actually *has* to spend or act with.
@@ -413,41 +430,43 @@ I’ll read the symbols as:
 
 Choose the mapping:
 
-* (I(t) \leftrightarrow E(t\mid x)+\epsilon) — the instantaneous input.
+* $I(t) \leftrightarrow E(t\mid x)+\epsilon$ — the instantaneous input.
 
-* (\tau(t)) (throughput) is an operator built from the *derivative/acceleration/precision terms*: roughly,
-  [
+* $\tau(t)$ (throughput) is an operator built from the *derivative/acceleration/precision terms*: roughly,
+
+  $$
   \tau(t) \approx f!\Big(\dot E_x,;\dot E_{\bar{x}},;\sqrt{\ddot E_x},;\text{precision}\Big)
-  ]
+  $$
+  
   — i.e., throughput depends on the sign and magnitude of (\dot E), how the rest of the system is behaving ((\dot E_{\bar{x}})), and volatility ((\sqrt{\ddot E})) which reduces effective throughput when large (because volatility increases entropy / uncertainty).
 
-* Output (O(t)) is the cumulative or realized effect: (\int E_x,dt + \epsilon_x t + C_x) (or some function of it, e.g., converted to value via an efficiency factor).
+* Output $O(t)$ is the cumulative or realized effect: $\int E_x,dt + \epsilon_x t + C_x$ (or some function of it, e.g., converted to value via an efficiency factor).
 
 So the whole chain is: instantaneous evidence → rate/acceleration analysis → volatility-corrected throughput → cumulative realized output.
 
 ---
 
-# 4) Why the (\sqrt{\ddot E_x}) term matters (careful algebra + intuition)
+# 4) Why the $\sqrt{\ddot E_x}$ term matters (careful algebra + intuition)
 
-* The second derivative (\ddot E_x) (acceleration) measures how quickly the *rate of input* is changing. Large accelerations often indicate nonlinearity or regime change (e.g., epidemic growth, load spike).
+* The second derivative $\ddot E_x$ (acceleration) measures how quickly the *rate of input* is changing. Large accelerations often indicate nonlinearity or regime change (e.g., epidemic growth, load spike).
 * Taking the square root makes the shock term scale like an amplitude (same units as rate), so you can add/subtract it with first-derivative terms.
 * Sign & ±: you can use it to *expand* (add) expected instability as a precaution or *contract* (subtract) when you dampen volatility via control.
 
-Operational rule: treat (\sqrt{\ddot E_x}) as a volatility penalty that reduces effective throughput (\tau) when it grows.
+Operational rule: treat $\sqrt{\ddot E_x}$ as a volatility penalty that reduces effective throughput (\tau) when it grows.
 
 ---
 
 # 5) Tiny numeric toy (digit-by-digit arithmetic)
 
-Pick a simple model: (E(t\mid x) = 100 + 10\sin(t)). Compute at (t=0).
+Pick a simple model: $E(t\mid x) = 100 + 10\sin(t)$. Compute at $t=0$.
 
-1. (E(0\mid x) = 100 + 10\sin(0) = 100 + 0 = 100.)
-2. (\dot E_x = \dfrac{d}{dt}[100 + 10\sin(t)] = 10\cos(t)). So (\dot E_x(0)=10\cos(0)=10\cdot1=10.)
-3. (\ddot E_x = \dfrac{d}{dt}[10\cos(t)] = -10\sin(t)). So (\ddot E_x(0) = -10\sin(0)=0.)
+1. $E(0\mid x) = 100 + 10\sin(0) = 100 + 0 = 100.$
+2. $\dot E_x = \dfrac{d}{dt}[100 + 10\sin(t)] = 10\cos(t)). So (\dot E_x(0)=10\cos(0)=10\cdot1=10.$
+3. $\ddot E_x = \dfrac{d}{dt}[10\cos(t)] = -10\sin(t)). So (\ddot E_x(0) = -10\sin(0)=0.$
 
-   * (\sqrt{\ddot E_x(0)}) is then (\sqrt{0}=0) (no instantaneous acceleration shock).
-4. Suppose (\dot E_{\bar{x}}(0)= -2) (complement is dropping slowly). Then the volatility-corrected term is (-2 \pm 0 = -2).
-5. Integral over a short dt (say from 0 to 1) of (E) (approx) ≈ average value × duration ≈ (100 \times 1 = 100) (if you want exact, integrate analytically: (\int_0^1 [100 + 10\sin t],dt = 100\cdot1 -10\cos t\big|_0^1 = 100 -10(\cos 1 - \cos 0)). Numerically (\cos 1 \approx 0.540302), (\cos 0=1). So (-10(0.540302 -1) = -10(-0.459698)=4.59698). So integral = (100 + 4.59698 = 104.59698).)
+   * $\sqrt{\ddot E_x(0)}$ is then $\sqrt{0}=0$ (no instantaneous acceleration shock).
+4. Suppose $\dot E_{\bar{x}}(0)= -2$ (complement is dropping slowly). Then the volatility-corrected term is (-2 \pm 0 = -2).
+5. Integral over a short dt (say from 0 to 1) of (E) (approx) ≈ average value × duration ≈ $100 \times 1 = 100$ (if you want exact, integrate analytically: $\int_0^1 [100 + 10\sin t],dt = 100\cdot1 -10\cos t\big|_0^1 = 100 -10(\cos 1 - \cos 0)$. Numerically $\cos 1 \approx 0.540302$, $\cos 0=1$. So $-10(0.540302 -1) = -10(-0.459698)=4.59698). So integral = (100 + 4.59698 = 104.59698).$
 
 Takeaway: with modest sinusoidal fluctuation, instantaneous rate and acceleration are tiny; cumulative energy over a window slightly exceeds the baseline because of the wave shape.
 
@@ -457,19 +476,19 @@ Takeaway: with modest sinusoidal fluctuation, instantaneous rate and acceleratio
 
 Concrete metrics to compute and monitor (translate to dashboard rows):
 
-* **Instantaneous Input**: (E(t\mid x)) — raw signal.
-* **Noise estimate**: rolling std of residuals → (\hat\epsilon).
-* **Rate**: (\dot E_x) — estimate via difference quotient (e.g., (E_{t} - E_{t-1}) / Δt).
-* **Acceleration**: (\ddot E_x) — second-difference.
-* **Volatility shock**: (\sqrt{\max(0,\ \ddot E_x)}) or use abs value if you want magnitude.
-* **Complement flow**: (\dot E_{\bar{x}}) — compare to system baseline.
-* **Cumulative reservoir**: (\int E_x,dt) — running sum / charge.
-* **Throughput estimate**: (\tau(t) = g(\dot E_x,\ \dot E_{\bar{x}},\ \sqrt{\ddot E_x},\ \text{precision})) where (g) is a monotone decreasing function in volatility. (You can pick linear form: (\tau = \alpha_0 + \alpha_1\dot E_x + \alpha_2\dot E_{\bar{x}} - \alpha_3\sqrt{|\ddot E_x|}).)
+* **Instantaneous Input**: $E(t\mid x)$ — raw signal.
+* **Noise estimate**: rolling std of residuals → $\hat\epsilon$.
+* **Rate**: $\dot E_x$ — estimate via difference quotient (e.g., $E_{t} - E_{t-1}) / Δt$.
+* **Acceleration**: $\ddot E_x$ — second-difference.
+* **Volatility shock**: $\sqrt{\max(0,\ \ddot E_x)}$ or use abs value if you want magnitude.
+* **Complement flow**: $\dot E_{\bar{x}}$ — compare to system baseline.
+* **Cumulative reservoir**: $\int E_x,dt$ — running sum / charge.
+* **Throughput estimate**: $\tau(t) = g(\dot E_x,\ \dot E_{\bar{x}},\ \sqrt{\ddot E_x},\ \text{precision})$ where $g$ is a monotone decreasing function in volatility. (You can pick linear form: $\tau = \alpha_0 + \alpha_1\dot E_x + \alpha_2\dot E_{\bar{x}} - \alpha_3\sqrt{|\ddot E_x|}).$
 
 Alert rules (examples):
 
-* p95 latency spike when (\sqrt{|\ddot E_x|} > ) threshold.
-* If (\dot E_x) positive and (\dot E_{\bar{x}}) negative → local surge isolated to (x) (attention reallocation).
+* p95 latency spike when $\sqrt{|\ddot E_x|} > $ threshold.
+* If $\dot E_x$ positive and $\dot E_{\bar{x}}$ negative → local surge isolated to (x) (attention reallocation).
 * If cumulative integral falls below reserve threshold: trigger capacity hedging.
 
 ---
@@ -499,8 +518,8 @@ You said your PFC is done — here’s a tiny playbook to externalize the thinki
 
 # 8) Quick mapping back to collapse modes (so it’s actionable)
 
-* Rising (\sqrt{|\ddot E_x|}) → early warning of collapse-mode “volatility” (information entropy / shock).
-* (\dot E_x) >> capacity → energy/compute bottleneck.
+* Rising $\sqrt{|\ddot E_x|}$ → early warning of collapse-mode “volatility” (information entropy / shock).
+* $\dot E_x$ >> capacity → energy/compute bottleneck.
 * Integral falling steadily → resource depletion (cumulative drain).
 
 Mitigations follow directly: damp volatility (smoothing, validation), increase slack (capacity hedging), and preserve reservoir (throttle nonessential consumers).
